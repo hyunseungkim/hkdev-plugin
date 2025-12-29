@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "hkdev-plugin",
+  "owner": {
+    "name": "hyunkim"
+  },
+  "plugins": [
+    {
+      "name": "hkdev",
+      "source": {
+        "source": "url",
+        "url": "https://gitlab.pznas.synology.me/claude-code/hkdev-plugin.git"
+      },
+      "version": "0.2.3",
+      "description": "Project Development Process Plugin - Phase/Sprint/Task workflow, documentation templates, and AI collaboration patterns"
+    }
+  ]
+}

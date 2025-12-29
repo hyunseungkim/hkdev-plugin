@@ -1,0 +1,44 @@
+{
+  "name": "hkdev",
+  "version": "0.2.3",
+  "description": "Project Development Process Plugin - Phase/Sprint/Task workflow, documentation templates, and AI collaboration patterns",
+  "author": {
+    "name": "hyunkim",
+    "email": "hspuzzle@gmail.com"
+  },
+  "keywords": [
+    "project-management",
+    "sprint-management",
+    "task-management",
+    "documentation",
+    "workflow",
+    "ai-collaboration",
+    "ux-design"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/session-context.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/workflow-validator.sh\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
+  }
+}
