@@ -26,7 +26,7 @@ This plugin **automatically generates standardized structures and document draft
 | **Automatic Document Generation** | Auto-generate drafts for PDD, Roadmap, Architecture, ADR, Persona, etc. |
 | **Phase/Sprint/Task Management** | Hierarchical structure: 8-16 week Phase → 1-2 week Sprint → 30min-8hr Task |
 | **Session-based Context** | Maintain work continuity, restore interrupted work |
-| **33 Document Templates** | Standard templates for entire project lifecycle (integrated in skills/references/) |
+| **36 Document Templates** | Standard templates for entire project lifecycle (integrated in skills/references/) |
 | **5 Specialized Agents** | Development, DevOps, Tech Writing, QA, Architect roles |
 
 ---
@@ -42,8 +42,11 @@ Users **directly invoke** these. Must use `/hkdev:` prefix.
 /hkdev:task:start                    # Start task
 ```
 
-### Skills (10)
+### Skills (11)
 Claude **automatically invokes** these based on context. No need for users to call directly.
+
+### Hooks (2)
+Shell scripts that run automatically at specific Claude Code lifecycle events.
 
 ### Agents (5)
 Claude **automatically selects** these based on task nature.
@@ -302,7 +305,7 @@ project/
 
 ---
 
-## Templates (33)
+## Templates (36)
 
 > Templates are centrally managed in skills/references/ folders.
 
@@ -342,7 +345,7 @@ project/
 | Review | 5 | review-management/references/ |
 | Flags | 1 | flags/references/ |
 | Operations | 4 | templates/operations/ |
-| **Total** | **33** | |
+| **Total** | **36** | |
 
 ---
 
@@ -357,6 +360,22 @@ Claude automatically selects the appropriate agent based on task nature.
 | **tech-writer** | Technical documentation | API docs, guides, README |
 | **qa-engineer** | Testing, quality verification | Test cases, automation, quality reports |
 | **architect** | Design review, architecture decisions | ADR writing, design review, technology selection |
+
+---
+
+## Hooks (2)
+
+Shell scripts that run automatically at specific Claude Code lifecycle events.
+
+| Hook | Event | Description |
+|------|-------|-------------|
+| **session-context.sh** | SessionStart | Display Git status, current task, and sprint progress when session starts |
+| **workflow-validator.sh** | Stop | Validate workflow compliance (check for misplaced tasks, empty sprints) |
+
+### Safety Features
+- Recursion prevention
+- Timeout protection (5 seconds)
+- Non-blocking errors
 
 ---
 
